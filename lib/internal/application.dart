@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isport_app/presentation/home.dart';
+import 'package:isport_app/presentation/welcome.dart';
 
 class Application extends StatelessWidget {
   const Application({super.key});
@@ -12,7 +12,7 @@ class Application extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(),
+      home: const Welcome(),
     );
   }
 }
