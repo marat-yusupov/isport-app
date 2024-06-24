@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:isport_app/presentation/login.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -30,11 +32,16 @@ Register now!
 """,
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontFamily: 'Toboggan', fontSize: 15, color: Colors.black),
+                  fontFamily: 'Toboggan-Medium',
+                  fontSize: 15,
+                  color: Colors.black),
             ),
             const SizedBox(height: 30),
             TextButton(
-              onPressed: null,
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => const Login()));
+              },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
                 fixedSize: const Size(250, 50),
@@ -43,7 +50,7 @@ Register now!
                 "LOGIN",
                 style: TextStyle(
                   color: Colors.white,
-                  fontFamily: "Toboggan",
+                  fontFamily: "Toboggan-Medium",
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
@@ -59,36 +66,11 @@ Register now!
                 "CREATE ACCOUNT",
                 style: TextStyle(
                     color: Colors.white,
-                    fontFamily: "Toboggan",
+                    fontFamily: "Toboggan-Medium",
                     fontSize: 15,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold),
               ),
-            ),
-            const SizedBox(height: 70),
-            const Text(
-              "Or login via social media",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: "Toboggan",
-                fontSize: 15,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 65,
-                  height: 65,
-                  child: Image.asset("assets/images/google.png"),
-                ),
-                SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: Image.asset("assets/images/telegram.png"),
-                ),
-              ],
             ),
           ],
         ),
