@@ -39,7 +39,7 @@ class FeedState extends State<Feed> {
                     height: 200,
                     child: Padding(
                       padding:
-                          const EdgeInsets.only(left: 20, right: 20, top: 20),
+                          const EdgeInsets.only(left: 15, right: 15, top: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
