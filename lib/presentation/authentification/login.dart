@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:isport_app/presentation/home.dart';
+import 'package:isport_app/presentation/content/app_frame.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -95,8 +95,10 @@ We miss you!
             Center(
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => const Home()));
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const AppFrame()));
                 },
                 style: TextButton.styleFrom(
                     backgroundColor: Colors.blueAccent,

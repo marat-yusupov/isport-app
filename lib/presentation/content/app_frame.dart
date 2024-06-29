@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:isport_app/presentation/content/profile.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class AppFrame extends StatefulWidget {
+  const AppFrame({super.key});
 
   @override
-  HomeState createState() => HomeState();
+  AppFrameState createState() => AppFrameState();
 }
 
-class HomeState extends State<Home> {
+class AppFrameState extends State<AppFrame> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -16,14 +17,16 @@ class HomeState extends State<Home> {
     });
   }
 
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text("data"),
+    Text("data"),
+    Profile(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 50,
-        backgroundColor: Colors.blueAccent,
-        automaticallyImplyLeading: false,
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

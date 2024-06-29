@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:isport_app/presentation/login.dart';
+import 'package:isport_app/presentation/authentification/login.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
