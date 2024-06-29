@@ -22,7 +22,7 @@ class WelcomeState extends State<Welcome> {
               "iSport",
               style: TextStyle(
                   fontFamily: 'Toboggan',
-                  fontSize: 100,
+                  fontSize: 80,
                   color: Colors.blueAccent),
             ),
             const Text(
@@ -44,14 +44,14 @@ Register now!
               },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
-                fixedSize: const Size(250, 50),
+                fixedSize: const Size(190, 45),
               ),
               child: const Text(
                 "LOGIN",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: "Toboggan-Medium",
-                  fontSize: 15,
+                  fontSize: 12.5,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -61,13 +61,13 @@ Register now!
               onPressed: null,
               style: TextButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
-                  fixedSize: const Size(250, 50)),
+                  fixedSize: const Size(190, 45)),
               child: const Text(
                 "CREATE ACCOUNT",
                 style: TextStyle(
                     color: Colors.white,
                     fontFamily: "Toboggan-Medium",
-                    fontSize: 15,
+                    fontSize: 12.5,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.bold),
               ),

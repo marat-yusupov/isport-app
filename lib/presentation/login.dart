@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:isport_app/presentation/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -16,17 +18,17 @@ class LoginState extends State<Login> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 70),
             const Text(
               "Lets Sign you in!",
               style: TextStyle(
                   fontFamily: 'Toboggan-Medium',
-                  fontSize: 40,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent),
               textAlign: TextAlign.right,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             const Text(
               """
 Welcome back!
@@ -34,15 +36,15 @@ We miss you!
               """,
               style: TextStyle(
                   fontFamily: 'Toboggan-Medium',
-                  fontSize: 30,
+                  fontSize: 20,
                   color: Colors.black),
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 10),
             const Center(
               child: SizedBox(
-                width: 450,
-                height: 50,
+                width: 425,
+                height: 45,
                 child: TextField(
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -58,8 +60,8 @@ We miss you!
             const SizedBox(height: 15),
             const Center(
               child: SizedBox(
-                width: 450,
-                height: 50,
+                width: 425,
+                height: 45,
                 child: TextField(
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -92,24 +94,27 @@ We miss you!
             const SizedBox(height: 25),
             Center(
               child: TextButton(
-                onPressed: null,
+                onPressed: () {
+                  Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => const Home()));
+                },
                 style: TextButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
-                    fixedSize: const Size(250, 50)),
+                    fixedSize: const Size(190, 45)),
                 child: const Text(
                   "SIGN IN",
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "Toboggan-Medium",
-                      fontSize: 15,
+                      fontSize: 12.5,
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
             const Divider(),
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -149,7 +154,7 @@ We miss you!
                 ),
               ],
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
