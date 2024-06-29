@@ -13,46 +13,18 @@ class ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 120,
+        toolbarHeight: 70,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blueAccent,
-        title: Row(
-          children: [
-            SizedBox(
-              height: 90,
-              width: 90,
-              child: Image.network(MockConstants.avatarLink),
-            ),
-            const SizedBox(width: 15),
-            const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  MockConstants.fullName,
-                  style: TextStyle(
-                      fontFamily: 'Toboggan-Medium',
-                      fontSize: 25,
-                      color: Colors.white),
-                ),
-                Text(
-                  MockConstants.nick,
-                  style: TextStyle(
-                      fontFamily: 'Toboggan',
-                      fontSize: 10,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w100),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "Rang: ${MockConstants.rang}",
-                  style: TextStyle(
-                      fontFamily: 'Toboggan-Medium',
-                      fontSize: 15,
-                      color: Colors.white),
-                ),
-              ],
-            ),
-          ],
+        surfaceTintColor: Colors.white,
+        title: const Padding(
+          padding: EdgeInsets.all(15),
+          child: Text(
+            "Profile",
+            style: TextStyle(
+                fontFamily: 'Toboggan-Medium',
+                fontSize: 30,
+                color: Colors.blueAccent),
+          ),
         ),
       ),
       body: Padding(
@@ -60,15 +32,47 @@ class ProfileState extends State<Profile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            const Text(
-              "Profile",
-              style: TextStyle(
-                  fontFamily: 'Toboggan-Medium',
-                  fontSize: 30,
-                  color: Colors.black),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      height: 55,
+                      width: 55,
+                      child: Image.network(MockConstants.avatarLink),
+                    ),
+                    const SizedBox(width: 15),
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          MockConstants.fullName,
+                          style: TextStyle(
+                              fontFamily: 'Toboggan-Medium',
+                              fontSize: 15,
+                              color: Colors.black),
+                        ),
+                        Text(
+                          MockConstants.nick,
+                          style: TextStyle(
+                              fontFamily: 'Toboggan',
+                              fontSize: 10,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w100),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            const Divider(),
+            const SizedBox(height: 15),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
             Row(
               children: [
                 const Icon(Icons.image_outlined),
@@ -79,7 +83,7 @@ class ProfileState extends State<Profile> {
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: "Toboggan-Medium",
-                      fontSize: 20,
+                              fontSize: 15,
                     ),
                   ),
                 ),
@@ -96,7 +100,7 @@ class ProfileState extends State<Profile> {
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: "Toboggan-Medium",
-                      fontSize: 20,
+                              fontSize: 15,
                     ),
                   ),
                 ),
@@ -113,7 +117,7 @@ class ProfileState extends State<Profile> {
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: "Toboggan-Medium",
-                      fontSize: 20,
+                              fontSize: 15,
                     ),
                   ),
                 ),
@@ -130,15 +134,22 @@ class ProfileState extends State<Profile> {
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: "Toboggan-Medium",
-                      fontSize: 20,
+                              fontSize: 15,
                     ),
-                  ),
+                          ),
                 ),
-              ],
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            const Divider(),
             const SizedBox(height: 15),
-            Row(
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: Row(
               children: [
                 const Icon(Icons.logout_outlined),
                 TextButton(
@@ -148,11 +159,13 @@ class ProfileState extends State<Profile> {
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: "Toboggan-Medium",
-                      fontSize: 20,
+                          fontSize: 15,
                     ),
                   ),
                 ),
               ],
+                ),
+              ),
             ),
           ],
         ),
