@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isport_app/presentation/content/feed.dart';
+import 'package:isport_app/presentation/content/feed/feed.dart';
 import 'package:isport_app/presentation/content/profile.dart';
 import 'package:isport_app/presentation/content/workouts.dart';
 

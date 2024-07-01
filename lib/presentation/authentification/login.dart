@@ -42,9 +42,7 @@ We miss you!
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 10),
-            const Center(
-              child: SizedBox(
-                width: 425,
+            const SizedBox(
                 height: 45,
                 child: TextField(
                   decoration: InputDecoration(
@@ -55,14 +53,11 @@ We miss you!
                     labelText: "E-mail, phone or username",
                   ),
                   cursorColor: Colors.blueAccent,
-                ),
               ),
             ),
             const SizedBox(height: 15),
-            const Center(
-              child: SizedBox(
-                width: 425,
-                height: 45,
+            const SizedBox(
+              height: 45,
                 child: TextField(
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -71,8 +66,7 @@ We miss you!
                     border: OutlineInputBorder(),
                     labelText: "Password",
                   ),
-                  cursorColor: Colors.blueAccent,
-                ),
+                cursorColor: Colors.blueAccent,
               ),
             ),
             const SizedBox(height: 5),
