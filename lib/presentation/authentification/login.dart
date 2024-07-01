@@ -17,6 +17,7 @@ class LoginState extends State<Login> {
         padding: const EdgeInsets.only(left: 40, right: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 70),
             const Text(
