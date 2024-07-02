@@ -34,21 +34,20 @@ class FeedState extends State<Feed> {
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
-              for (var user in MockConstants.userList)
+              for (var post in MockConstants.postList)
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => SelectedFeed(user)));
+                            builder: (context) => SelectedFeed(post)));
                   },
                   child: Card(
                     child: SizedBox(
                       width: double.infinity,
-                      height: 200,
                       child: Padding(
                         padding:
-                            const EdgeInsets.only(left: 15, right: 15, top: 15),
+                            const EdgeInsets.all(15),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -57,21 +56,21 @@ class FeedState extends State<Feed> {
                                 SizedBox(
                                   height: 55,
                                   width: 55,
-                                  child: Image.network(user.avatarLink),
+                                  child: Image.network(post.user.avatarLink),
                                 ),
                                 const SizedBox(width: 15),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      user.fullName,
+                                      post.user.fullName,
                                       style: const TextStyle(
                                           fontFamily: 'Toboggan-Medium',
                                           fontSize: 15,
                                           color: Colors.black),
                                     ),
                                     Text(
-                                      user.nick,
+                                      post.user.nick,
                                       style: const TextStyle(
                                           fontFamily: 'Toboggan',
                                           fontSize: 10,
@@ -83,8 +82,8 @@ class FeedState extends State<Feed> {
                               ],
                             ),
                             const SizedBox(height: 15),
-                            const Text(
-                              MockConstants.longText,
+                            Text(
+                              post.textContent,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 4,
                             ),
