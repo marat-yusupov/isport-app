@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   full_screen_image: ^2.0.0
   collection: ^1.15.0
+  dio: ^5.5.0+1
+  http: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:full_screen_image/full_screen_image.dart';
 import 'package:isport_app/domain/mocks/mock_constants.dart';
 import 'package:isport_app/domain/mocks/models/mock_post_model.dart';
 
