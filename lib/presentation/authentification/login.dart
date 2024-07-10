@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:isport_app/presentation/content/app_frame.dart';
+import 'package:isport_app/presentation/authentification/registration.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -183,7 +184,12 @@ We miss you!
                       color: Colors.black),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const Registration()));
+                  },
                   style: ButtonStyle(
                       overlayColor:
                           MaterialStateProperty.all(Colors.transparent)),
