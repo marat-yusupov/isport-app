@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isport_app/presentation/content/mock_constants.dart';
+import 'package:isport_app/domain/mocks/models/mock_user_model.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -40,22 +40,22 @@ class ProfileState extends State<Profile> {
                     SizedBox(
                       height: 55,
                       width: 55,
-                      child: Image.network(MockConstants.avatarLink),
+                      child: Image.network(MockUserModel().avatarLink),
                     ),
                     const SizedBox(width: 15),
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          MockConstants.fullName,
-                          style: TextStyle(
+                          MockUserModel().fullName,
+                          style: const TextStyle(
                               fontFamily: 'Toboggan-Medium',
                               fontSize: 15,
                               color: Colors.black),
                         ),
                         Text(
-                          MockConstants.nick,
-                          style: TextStyle(
+                          MockUserModel().nick,
+                          style: const TextStyle(
                               fontFamily: 'Toboggan',
                               fontSize: 10,
                               color: Colors.black,

@@ -11,9 +11,20 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
+  final _loginFieldController = TextEditingController();
+  final _passwordFieldController = TextEditingController();
+
+  @override
+  void dispose() {
+    _loginFieldController.dispose();
+    _passwordFieldController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(left: 40, right: 40),
         child: Column(
@@ -34,7 +45,7 @@ class LoginState extends State<Login> {
             const Text(
               """
 Welcome back!
-We miss you! 
+We miss you!
               """,
               style: TextStyle(
                   fontFamily: 'Toboggan-Medium',
@@ -43,37 +54,39 @@ We miss you!
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 10),
-            const Center(
-              child: SizedBox(
-                width: 425,
+            SizedBox(
                 height: 45,
                 child: TextField(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
+                controller: _loginFieldController,
+                decoration: const InputDecoration(
+                  focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
                     ),
-                    border: OutlineInputBorder(),
+                  border: OutlineInputBorder(),
                     labelText: "E-mail, phone or username",
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
                   ),
-                  cursorColor: Colors.blueAccent,
                 ),
+                cursorColor: Colors.blueAccent,
               ),
             ),
             const SizedBox(height: 15),
-            const Center(
-              child: SizedBox(
-                width: 425,
-                height: 45,
+            SizedBox(
+              height: 45,
                 child: TextField(
-                  decoration: InputDecoration(
+                controller: _passwordFieldController,
+                decoration: const InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
                     ),
                     border: OutlineInputBorder(),
                     labelText: "Password",
+                  labelStyle: TextStyle(
+                    color: Colors.grey,
                   ),
-                  cursorColor: Colors.blueAccent,
-                ),
+                  ),
+                cursorColor: Colors.blueAccent,
               ),
             ),
             const SizedBox(height: 5),
