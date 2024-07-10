@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:isport_app/data/api/models/api_user_model.dart';
+import 'package:isport_app/data/api/services/auth_service.dart';
 import 'package:isport_app/presentation/content/app_frame.dart';
 import 'package:isport_app/presentation/authentification/registration.dart';
 
@@ -55,15 +57,15 @@ We miss you!
             ),
             const SizedBox(height: 10),
             SizedBox(
-                height: 45,
-                child: TextField(
+              height: 45,
+              child: TextField(
                 controller: _loginFieldController,
                 decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blueAccent),
-                    ),
+                    borderSide: BorderSide(color: Colors.blueAccent),
+                  ),
                   border: OutlineInputBorder(),
-                    labelText: "E-mail, phone or username",
+                  labelText: "E-mail, phone or username",
                   labelStyle: TextStyle(
                     color: Colors.grey,
                   ),
@@ -74,18 +76,18 @@ We miss you!
             const SizedBox(height: 15),
             SizedBox(
               height: 45,
-                child: TextField(
+              child: TextField(
                 controller: _passwordFieldController,
                 decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blueAccent),
-                    ),
-                    border: OutlineInputBorder(),
-                    labelText: "Password",
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blueAccent),
+                  ),
+                  border: OutlineInputBorder(),
+                  labelText: "Password",
                   labelStyle: TextStyle(
                     color: Colors.grey,
                   ),
-                  ),
+                ),
                 cursorColor: Colors.blueAccent,
               ),
             ),
@@ -95,8 +97,7 @@ We miss you!
               child: TextButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                    overlayColor:
-                        MaterialStateProperty.all(Colors.transparent)),
+                    overlayColor: WidgetStateProperty.all(Colors.transparent)),
                 child: const Text(
                   "Forgot password?",
                   style: TextStyle(
@@ -109,7 +110,13 @@ We miss you!
             const SizedBox(height: 25),
             Center(
               child: TextButton(
-                onPressed: () {
+                onPressed: () async {
+                  String username = _loginFieldController.text;
+                  String password = _passwordFieldController.text;
+
+                  var result = await AuthService().TryLogin(username, password);
+                  result.print_model();
+
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
