@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:isport_app/presentation/authentification/login.dart';
+import 'package:isport_app/presentation/authentification/registration.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -58,7 +59,12 @@ Register now!
             ),
             const SizedBox(height: 20),
             TextButton(
-              onPressed: null,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => const Registration()));
+              },
               style: TextButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   fixedSize: const Size(190, 45)),
