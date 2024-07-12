@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:isport_app/data/api/models/api_user_model.dart';
-import 'package:isport_app/data/api/services/auth_service.dart';
+import 'package:isport_app/domain/state/login_state.dart';
+import 'package:isport_app/internal/dependencies/login_module.dart';
 import 'package:isport_app/presentation/content/app_frame.dart';
 import 'package:isport_app/presentation/authentification/registration.dart';
 
@@ -9,12 +9,22 @@ class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
-  LoginState createState() => LoginState();
+  _LoginState createState() => _LoginState();
 }
 
-class LoginState extends State<Login> {
+class _LoginState extends State<Login> {
   final _loginFieldController = TextEditingController();
   final _passwordFieldController = TextEditingController();
+
+  late LoginState _loginState;
+  late String _errorText;
+  bool _showErrorBlock = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loginState = LoginModule.loginState();
+  }
 
   @override
   void dispose() {
@@ -56,6 +66,33 @@ We miss you!
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 10),
+            if (_showErrorBlock)
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.error,
+                        color: Colors.red,
+                      ),
+                      const SizedBox(width: 5),
+                      Flexible(
+                        child: Text(
+                          _errorText,
+                          style: const TextStyle(
+                              fontFamily: 'Toboggan-Medium',
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black),
+                          softWrap: true,
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
             SizedBox(
               height: 45,
               child: TextField(
@@ -110,12 +147,33 @@ We miss you!
             const SizedBox(height: 25),
             Center(
               child: TextButton(
-                onPressed: () async {
-                  String username = _loginFieldController.text;
-                  String password = _passwordFieldController.text;
+                onPressed: () {
+                  _tryLogin();
+                  if (_loginState.isLoading) {
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
 
-                  var result = await AuthService().TryLogin(username, password);
-                  result.print_model();
+                  var error = _loginState.error;
+                  if (error != null) {
+                    setState(() {
+                      _showErrorBlock = true;
+                      _errorText =
+                          error.isNotEmpty ? error : "Internal Server Error";
+                    });
+
+                    return;
+                  }
+
+                  if (_loginState.authData == null) {
+                    setState(() {
+                      _showErrorBlock = true;
+                      _errorText = "Incorrect login or password";
+                    });
+
+                    return;
+                  }
 
                   Navigator.push(
                       context,
@@ -147,7 +205,7 @@ We miss you!
                   onPressed: () {},
                   style: ButtonStyle(
                       overlayColor:
-                          MaterialStateProperty.all(Colors.transparent)),
+                          WidgetStateProperty.all(Colors.transparent)),
                   child: SizedBox(
                     width: 35,
                     height: 35,
@@ -158,7 +216,7 @@ We miss you!
                   onPressed: () {},
                   style: ButtonStyle(
                       overlayColor:
-                          MaterialStateProperty.all(Colors.transparent)),
+                          WidgetStateProperty.all(Colors.transparent)),
                   child: SizedBox(
                     width: 30,
                     height: 30,
@@ -169,7 +227,7 @@ We miss you!
                   onPressed: () {},
                   style: ButtonStyle(
                       overlayColor:
-                          MaterialStateProperty.all(Colors.transparent)),
+                          WidgetStateProperty.all(Colors.transparent)),
                   child: SizedBox(
                     width: 25,
                     height: 25,
@@ -199,7 +257,7 @@ We miss you!
                   },
                   style: ButtonStyle(
                       overlayColor:
-                          MaterialStateProperty.all(Colors.transparent)),
+                          WidgetStateProperty.all(Colors.transparent)),
                   child: const Text(
                     "Register now",
                     style: TextStyle(
@@ -214,5 +272,11 @@ We miss you!
         ),
       ),
     );
+  }
+
+  Future<void> _tryLogin() async {
+    final username = _loginFieldController.text;
+    final password = _passwordFieldController.text;
+    _loginState.tryLogin(username: username, password: password);
   }
 }

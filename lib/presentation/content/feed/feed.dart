@@ -7,10 +7,10 @@ class Feed extends StatefulWidget {
   const Feed({super.key});
 
   @override
-  FeedState createState() => FeedState();
+  _FeedState createState() => _FeedState();
 }
 
-class FeedState extends State<Feed> {
+class _FeedState extends State<Feed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

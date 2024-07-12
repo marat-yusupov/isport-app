@@ -7,10 +7,10 @@ class AppFrame extends StatefulWidget {
   const AppFrame({super.key});
 
   @override
-  AppFrameState createState() => AppFrameState();
+  _AppFrameState createState() => _AppFrameState();
 }
 
-class AppFrameState extends State<AppFrame> {
+class _AppFrameState extends State<AppFrame> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

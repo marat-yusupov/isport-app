@@ -7,23 +7,21 @@ class Registration extends StatefulWidget {
   const Registration({super.key});
 
   @override
-  RegistrationState createState() => RegistrationState();
+  _RegistrationState createState() => _RegistrationState();
 }
 
-class RegistrationState extends State<Registration> {
-  int value = 5;
-
+class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-            padding: EdgeInsets.only(left: 40, right: 40),
+            padding: const EdgeInsets.only(left: 40, right: 40),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Lets Register Account",
+                    "Lets Register \nAccount",
                     style: TextStyle(
                         fontFamily: 'Toboggan-Medium',
                         fontSize: 30,
@@ -33,73 +31,96 @@ class RegistrationState extends State<Registration> {
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    "Hello user, you have a greatful journey",
+                    "Hello user, you have \na grateful journey",
                     style: TextStyle(
                         fontFamily: 'Toboggan-Medium',
                         fontSize: 20,
                         color: Colors.black),
                     textAlign: TextAlign.left,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
                   const SizedBox(
-                    width: 425,
                     height: 45,
                     child: TextField(
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blueAccent),
-                            ),
-                            border: OutlineInputBorder(),
-                            labelText: "Name")),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                        ),
+                        border: OutlineInputBorder(),
+                        labelText: "Name",
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const SizedBox(
+                    height: 45,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                        ),
+                        border: OutlineInputBorder(),
+                        labelText: "Surname",
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const SizedBox(
                     width: 425,
                     height: 45,
                     child: TextField(
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blueAccent),
-                            ),
-                            border: OutlineInputBorder(),
-                            labelText: "Surname")),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                        ),
+                        border: OutlineInputBorder(),
+                        labelText: "Phone",
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const SizedBox(
                     width: 425,
                     height: 45,
                     child: TextField(
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blueAccent),
-                            ),
-                            border: OutlineInputBorder(),
-                            labelText: "Phone")),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                        ),
+                        border: OutlineInputBorder(),
+                        labelText: "Email",
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const SizedBox(
                     width: 425,
                     height: 45,
                     child: TextField(
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blueAccent),
-                            ),
-                            border: OutlineInputBorder(),
-                            labelText: "Email")),
-                  ),
-                  const SizedBox(height: 10),
-                  const SizedBox(
-                    width: 425,
-                    height: 45,
-                    child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blueAccent),
-                            ),
-                            border: OutlineInputBorder(),
-                            labelText: "Password")),
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                        ),
+                        border: OutlineInputBorder(),
+                        labelText: "Password",
+                        labelStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 30),
                   Center(

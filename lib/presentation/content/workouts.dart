@@ -4,10 +4,10 @@ class Workouts extends StatefulWidget {
   const Workouts({super.key});
 
   @override
-  WorkoutsState createState() => WorkoutsState();
+  _WorkoutsState createState() => _WorkoutsState();
 }
 
-class WorkoutsState extends State<Workouts> {
+class _WorkoutsState extends State<Workouts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

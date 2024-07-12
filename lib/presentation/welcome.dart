@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:isport_app/presentation/authentification/login.dart';
 import 'package:isport_app/presentation/authentification/registration.dart';
 
-class Welcome extends StatefulWidget {
+class Welcome extends StatefulWidget { 
   const Welcome({super.key});
 
   @override

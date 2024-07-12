@@ -5,10 +5,10 @@ class Profile extends StatefulWidget {
   const Profile({super.key});
 
   @override
-  ProfileState createState() => ProfileState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class ProfileState extends State<Profile> {
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

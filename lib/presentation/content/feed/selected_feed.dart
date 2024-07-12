@@ -9,10 +9,10 @@ class SelectedFeed extends StatefulWidget {
   MockPostModel post;
 
   @override
-  SelectedFeedState createState() => SelectedFeedState();
+  _SelectedFeedState createState() => _SelectedFeedState();
 }
 
-class SelectedFeedState extends State<SelectedFeed> {
+class _SelectedFeedState extends State<SelectedFeed> {
   bool _isLiked = false;
   final FocusNode textFieldFocus = FocusNode();
 
