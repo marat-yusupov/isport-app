@@ -5,19 +5,23 @@ import 'dart:convert';
 import 'hosts.dart';
 
 class AuthService {
-  static const authService = Hosts.kAuthService;
+  static const _loginRoute = "${Hosts.kAuthService}/login";
 
-  Future<ApiAuthDataModel> tryLogin(TryLoginBody body) async {
+  Future<ApiAuthDataModel?> tryLogin(TryLoginBody body) async {
     String credentials = base64.encode(utf8.encode('${body.username}:${body.password}'));
     Map<String, String> headers = {'Authorization': 'Basic $credentials'};
 
     final response = await http.get(
-      Uri.parse(authService),
+      Uri.parse(_loginRoute),
       headers: headers,
     );
 
     if (response.statusCode == 200) {
-      return ApiAuthDataModel.fromJson(jsonDecode(response.body));
+      try {
+        return ApiAuthDataModel.fromJson(jsonDecode(response.body));
+      } catch (exception) {
+        return null;
+      }
     } else {
       throw Exception('No response received');
     }

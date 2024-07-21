@@ -8,12 +8,12 @@ class ApiUtil {
 
   ApiUtil(this._authService);
 
-  Future<AuthDataModel> tryLogin({
+  Future<AuthDataModel?> tryLogin({
     required String username,
     required String password,
   }) async {
     final body = TryLoginBody(username: username, password: password);
     final result = await _authService.tryLogin(body);
-    return AuthDataMapper.fromApi(result);
+    return result == null ? null : AuthDataMapper.fromApi(result);
   }
 }

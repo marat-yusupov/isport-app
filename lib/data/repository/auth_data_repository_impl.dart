@@ -8,7 +8,7 @@ class AuthDataRepositoryImpl extends AuthDataRepository {
   AuthDataRepositoryImpl(this._apiUtil);
 
   @override
-  Future<AuthDataModel> tryLogin(
+  Future<AuthDataModel?> tryLogin(
       {required String username, required String password}) {
     return _apiUtil.tryLogin(username: username, password: password);
   }

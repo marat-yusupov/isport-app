@@ -134,7 +134,8 @@ We miss you!
               child: TextButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.all(Colors.transparent)),
+                    overlayColor:
+                        MaterialStateProperty.all(Colors.transparent)),
                 child: const Text(
                   "Forgot password?",
                   style: TextStyle(
@@ -148,37 +149,23 @@ We miss you!
             Center(
               child: TextButton(
                 onPressed: () {
-                  _tryLogin();
-                  if (_loginState.isLoading) {
-                    const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
+                  _tryLogin().then((value) {
+                    var error = _loginState.error;
+                    if (error != null) {
+                      setState(() {
+                        _showErrorBlock = true;
+                        _errorText =
+                            error.isNotEmpty ? error : "Internal Server Error";
+                      });
 
-                  var error = _loginState.error;
-                  if (error != null) {
-                    setState(() {
-                      _showErrorBlock = true;
-                      _errorText =
-                          error.isNotEmpty ? error : "Internal Server Error";
-                    });
+                      return;
+                    }
 
-                    return;
-                  }
-
-                  if (_loginState.authData == null) {
-                    setState(() {
-                      _showErrorBlock = true;
-                      _errorText = "Incorrect login or password";
-                    });
-
-                    return;
-                  }
-
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const AppFrame()));
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const AppFrame()));
+                  });
                 },
                 style: TextButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
@@ -205,7 +192,7 @@ We miss you!
                   onPressed: () {},
                   style: ButtonStyle(
                       overlayColor:
-                          WidgetStateProperty.all(Colors.transparent)),
+                          MaterialStateProperty.all(Colors.transparent)),
                   child: SizedBox(
                     width: 35,
                     height: 35,
@@ -216,7 +203,7 @@ We miss you!
                   onPressed: () {},
                   style: ButtonStyle(
                       overlayColor:
-                          WidgetStateProperty.all(Colors.transparent)),
+                          MaterialStateProperty.all(Colors.transparent)),
                   child: SizedBox(
                     width: 30,
                     height: 30,
@@ -227,7 +214,7 @@ We miss you!
                   onPressed: () {},
                   style: ButtonStyle(
                       overlayColor:
-                          WidgetStateProperty.all(Colors.transparent)),
+                          MaterialStateProperty.all(Colors.transparent)),
                   child: SizedBox(
                     width: 25,
                     height: 25,
@@ -257,7 +244,7 @@ We miss you!
                   },
                   style: ButtonStyle(
                       overlayColor:
-                          WidgetStateProperty.all(Colors.transparent)),
+                          MaterialStateProperty.all(Colors.transparent)),
                   child: const Text(
                     "Register now",
                     style: TextStyle(
@@ -277,6 +264,6 @@ We miss you!
   Future<void> _tryLogin() async {
     final username = _loginFieldController.text;
     final password = _passwordFieldController.text;
-    _loginState.tryLogin(username: username, password: password);
+    await _loginState.tryLogin(username: username, password: password);
   }
 }

@@ -26,10 +26,14 @@ abstract class LoginStateBase with Store {
     required String password,
   }) async {
     isLoading = true;
+    error = null;
     try {
       final data =
       await _authDataRepository.tryLogin(
           username: username, password: password);
+      if (data == null) {
+        error = "Incorrect login or password";
+      }
       authData = data;
     } catch (ex) {
       error = ex.toString();
