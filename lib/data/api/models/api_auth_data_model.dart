@@ -1,8 +1,7 @@
 class ApiAuthDataModel {
-  final String sessionId;
   final String accountId;
 
-  ApiAuthDataModel({required this.sessionId, required this.accountId});
+  ApiAuthDataModel({required this.accountId});
 
   factory ApiAuthDataModel.fromJson(Map<String, dynamic> json) {
     print('[ApiAuthDataModel::fromJson] json = $json');
@@ -12,6 +11,6 @@ class ApiAuthDataModel {
     }
 
     return ApiAuthDataModel(
-        sessionId: json['session_id'], accountId: json['account_id']);
+        accountId: json['account_id']);
   }
 }
